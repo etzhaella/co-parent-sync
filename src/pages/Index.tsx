@@ -1,12 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import React, { useState } from 'react';
+import HeroSection from '@/components/HeroSection';
+import ScheduleCalendar from '@/components/ScheduleCalendar';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+  const [showCalendar, setShowCalendar] = useState(false);
+
+  if (showCalendar) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="border-b bg-card shadow-sm">
+          <div className="container mx-auto px-4 py-4 flex items-center justify-between" dir="rtl">
+            <h1 className="text-2xl font-bold text-card-foreground">לוח הזמנים המשפחתי</h1>
+            <Button variant="outline" onClick={() => setShowCalendar(false)}>
+              חזור לעמוד הבית
+            </Button>
+          </div>
+        </div>
+        <div className="container mx-auto px-4 py-8">
+          <ScheduleCalendar />
+        </div>
       </div>
+    );
+  }
+
+  return (
+    <div onClick={() => setShowCalendar(true)} style={{ cursor: 'pointer' }}>
+      <HeroSection />
     </div>
   );
 };
