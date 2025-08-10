@@ -51,19 +51,19 @@ const ScheduleCalendar = () => {
 
   const getEventTypeColor = (type: string) => {
     switch (type) {
-      case 'parent1': return 'bg-primary text-primary-foreground';
-      case 'parent2': return 'bg-secondary text-secondary-foreground';
-      case 'shared': return 'bg-accent text-accent-foreground';
+      case 'parent1': return 'bg-gradient-primary text-primary-foreground border-0';
+      case 'parent2': return 'bg-gradient-secondary text-secondary-foreground border-0';
+      case 'shared': return 'bg-gradient-purple text-purple-foreground border-0';
       default: return 'bg-muted text-muted-foreground';
     }
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6" dir="rtl">
-      <Card className="lg:col-span-2">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <CalendarDays className="h-5 w-5" />
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in" dir="rtl">
+      <Card className="lg:col-span-2 shadow-card hover:shadow-hover transition-all duration-300">
+        <CardHeader className="bg-gradient-card">
+          <CardTitle className="flex items-center gap-2 text-card-foreground">
+            <CalendarDays className="h-5 w-5 text-primary animate-float" />
             לוח השנה המשותף
           </CardTitle>
         </CardHeader>
@@ -88,20 +88,20 @@ const ScheduleCalendar = () => {
       </Card>
 
       <div className="space-y-4">
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Clock className="h-5 w-5" />
+        <Card className="shadow-card hover:shadow-hover transition-all duration-300 animate-scale-in">
+          <CardHeader className="bg-gradient-card">
+            <CardTitle className="flex items-center gap-2 text-card-foreground">
+              <Clock className="h-5 w-5 text-info animate-float" />
               {selectedDate ? `אירועים ב-${selectedDate.toLocaleDateString('he-IL')}` : 'בחר תאריך'}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {selectedEvents.length > 0 ? (
               selectedEvents.map(event => (
-                <div key={event.id} className="flex items-start gap-3 p-3 rounded-lg bg-calm">
+                <div key={event.id} className="flex items-start gap-3 p-3 rounded-lg bg-gradient-calm hover:scale-105 transition-all duration-300 border border-border/20">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <Badge variant="secondary" className={getEventTypeColor(event.type)}>
+                      <Badge variant="secondary" className={`${getEventTypeColor(event.type)} animate-scale-in`}>
                         {event.type === 'parent1' ? 'הורה א׳' : 
                          event.type === 'parent2' ? 'הורה ב׳' : 'משותף'}
                       </Badge>
@@ -119,21 +119,21 @@ const ScheduleCalendar = () => {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
+        <Card className="shadow-card hover:shadow-hover transition-all duration-300 animate-scale-in">
+          <CardHeader className="bg-gradient-card">
+            <CardTitle className="flex items-center gap-2 text-card-foreground">
+              <Users className="h-5 w-5 text-warning animate-float" />
               פעולות מהירות
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
-            <Button variant="default" className="w-full justify-start">
+            <Button variant="success" className="w-full justify-start hover:scale-105 transition-all duration-300">
               הוסף אירוע חדש
             </Button>
-            <Button variant="outline" className="w-full justify-start">
+            <Button variant="warning" className="w-full justify-start hover:scale-105 transition-all duration-300">
               בקש שינוי בלוח הזמנים
             </Button>
-            <Button variant="secondary" className="w-full justify-start">
+            <Button variant="purple" className="w-full justify-start hover:scale-105 transition-all duration-300">
               הצג היסטוריית שינויים
             </Button>
           </CardContent>

@@ -9,16 +9,19 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover shadow-soft hover:shadow-hover transition-all duration-300",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 transition-all duration-300",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground transition-all duration-300",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary-hover",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:from-primary-hover hover:to-secondary-hover shadow-lg hover:shadow-xl transition-all duration-300",
+          "bg-secondary text-secondary-foreground hover:bg-secondary-hover shadow-soft hover:shadow-hover transition-all duration-300",
+        ghost: "hover:bg-accent hover:text-accent-foreground transition-all duration-300",
+        link: "text-primary underline-offset-4 hover:underline transition-all duration-300",
+        hero: "bg-gradient-hero text-primary-foreground hover:scale-105 shadow-glow hover:animate-glow transition-all duration-300",
+        purple: "bg-gradient-purple text-purple-foreground hover:scale-105 shadow-soft hover:shadow-hover transition-all duration-300",
+        warning: "bg-warning text-warning-foreground hover:scale-105 shadow-soft hover:shadow-hover transition-all duration-300",
+        success: "bg-success text-success-foreground hover:scale-105 shadow-soft hover:shadow-hover transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
